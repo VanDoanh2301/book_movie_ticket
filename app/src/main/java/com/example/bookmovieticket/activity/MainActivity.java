@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.example.bookmovieticket.R;
@@ -22,14 +25,26 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigationView;
 
+    TextView txtSeeAll;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        txtSeeAll = findViewById(R.id.textView4);
+
+
         findView();
         setViewAdapter();
         openFragment();
+    }
+
+    public void gotoMovie() {
+        viewPager2.setCurrentItem(1);
+    }
+    public void gotoHome() {
+        viewPager2.setCurrentItem(0);
     }
 
     private void openFragment() {

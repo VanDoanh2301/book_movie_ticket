@@ -66,7 +66,7 @@ public class MovieAdapterMain extends RecyclerView.Adapter<MovieAdapterMain.Movi
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_movie_main);
-            cardView = itemView.findViewById(R.id.card_view_detail);
+            cardView = itemView.findViewById(R.id.card_view_movie);
 
             cardView.setOnClickListener(v -> {
                 if (listener != null) {

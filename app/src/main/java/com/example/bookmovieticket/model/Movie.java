@@ -15,7 +15,7 @@ public class Movie implements Serializable {
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("bannerUrl")
+    @SerializedName("banner_url")
     @Expose
     private String bannerUrl;
 
