@@ -98,6 +98,13 @@ public class HomeFragment extends Fragment {
 
     }
 
+    public void clearEditText() {
+        if (editSearch != null) {
+            editSearch.setText("");
+        }
+    }
+
+
     private void editSearchView() {
         editSearch.setOnEditorActionListener((v, actionId, event) -> {
             if(actionId == EditorInfo.IME_ACTION_DONE) {
@@ -222,12 +229,12 @@ public class HomeFragment extends Fragment {
 
     private List<Image> getListImage() {
         List<Image> images = new ArrayList<>();
-        images.add(new Image(R.drawable.profile));
-        images.add(new Image(R.drawable.profile));
-        images.add(new Image(R.drawable.img));
-        images.add(new Image(R.drawable.profile));
-        images.add(new Image(R.drawable.img));
-        images.add(new Image(R.drawable.profile));
+        images.add(new Image(R.drawable.img_1));
+        images.add(new Image(R.drawable.img_2));
+        images.add(new Image(R.drawable.img_3));
+        images.add(new Image(R.drawable.img_1));
+        images.add(new Image(R.drawable.img_2));
+        images.add(new Image(R.drawable.img_3));
         return images;
 
     }
@@ -256,4 +263,5 @@ public class HomeFragment extends Fragment {
             }
         },200, 3000);
     }
+
 }

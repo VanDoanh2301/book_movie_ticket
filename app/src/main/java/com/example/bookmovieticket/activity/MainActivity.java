@@ -3,23 +3,34 @@ package com.example.bookmovieticket.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
 import com.example.bookmovieticket.R;
 import com.example.bookmovieticket.adapter.ViewPagerAdapter;
+import com.example.bookmovieticket.fragment.HomeFragment;
+import com.example.bookmovieticket.fragment.MovieFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private HomeFragment homeFragment = new HomeFragment();
+    private MovieFragment movieFragment = new MovieFragment();
+
+    private ArrayList<Fragment> list = new ArrayList<>();
     private ViewPager2 viewPager2;
     private ViewPagerAdapter adapter;
 
@@ -38,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
         findView();
         setViewAdapter();
         openFragment();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+       homeFragment.clearEditText();
     }
 
     public void gotoMovie() {
@@ -85,9 +102,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void findView() {
         viewPager2 = findViewById(R.id.view_pager2);
-        adapter = new ViewPagerAdapter(this);
+        list.add(homeFragment);
+        list.add(movieFragment);
+        adapter = new ViewPagerAdapter(this, list);
         navigationView = findViewById(R.id.navi_bt);
     }
-
-
 }

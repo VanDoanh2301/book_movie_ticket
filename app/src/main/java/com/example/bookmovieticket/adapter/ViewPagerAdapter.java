@@ -8,27 +8,24 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.bookmovieticket.fragment.HomeFragment;
 import com.example.bookmovieticket.fragment.MovieFragment;
 
+import java.util.ArrayList;
+
 public class ViewPagerAdapter extends FragmentStateAdapter {
 
-    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+    private ArrayList<Fragment> listFragment = new ArrayList<>();
+
+    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<Fragment> listFragment) {
         super(fragmentActivity);
+        this.listFragment = listFragment;
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-
-        switch (position) {
-            case 0:
-                return new HomeFragment();
-            case 1:
-                return new MovieFragment();
-            default:
-                return new HomeFragment();
-        }
+        return listFragment.get(position);
     }
     @Override
     public int getItemCount() {
-        return 2;
+        return listFragment.size();
     }
 }
