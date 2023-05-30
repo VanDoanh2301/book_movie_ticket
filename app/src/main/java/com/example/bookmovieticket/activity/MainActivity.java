@@ -20,6 +20,7 @@ import com.example.bookmovieticket.R;
 import com.example.bookmovieticket.adapter.ViewPagerAdapter;
 import com.example.bookmovieticket.fragment.HomeFragment;
 import com.example.bookmovieticket.fragment.MovieFragment;
+import com.example.bookmovieticket.fragment.SticketFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
     private HomeFragment homeFragment = new HomeFragment();
     private MovieFragment movieFragment = new MovieFragment();
+
+    private SticketFragment sticketFragment = new SticketFragment();
 
     private ArrayList<Fragment> list = new ArrayList<>();
     private ViewPager2 viewPager2;
@@ -78,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         navigationView.getMenu().findItem(R.id.movie).setChecked(true);
                         break;
+                    case 2:
+                        navigationView.getMenu().findItem(R.id.user).setChecked(true);
+                        break;
+
                 }
             }
         });
@@ -90,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.movie:
                     viewPager2.setCurrentItem(1);
+                    break;
+                case R.id.user:
+                    viewPager2.setCurrentItem(2);
                     break;
             }
             return true;
@@ -104,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager2 = findViewById(R.id.view_pager2);
         list.add(homeFragment);
         list.add(movieFragment);
+        list.add(sticketFragment);
         adapter = new ViewPagerAdapter(this, list);
         navigationView = findViewById(R.id.navi_bt);
     }

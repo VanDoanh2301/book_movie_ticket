@@ -33,6 +33,7 @@ public class MovieAdapterMain extends RecyclerView.Adapter<MovieAdapterMain.Movi
     public void setData(List<Movie> movies) {
         this.movies = movies;
         notifyDataSetChanged();
+        
     }
 
     @NonNull

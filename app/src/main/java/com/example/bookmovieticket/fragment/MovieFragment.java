@@ -54,7 +54,6 @@ public class MovieFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_movie, container, false);
     }
 
@@ -73,7 +72,6 @@ public class MovieFragment extends Fragment {
         btn14 = view.findViewById(R.id.button14);
         btn15 = view.findViewById(R.id.button15);
         btn16 = view.findViewById(R.id.button16);
-        btn17 = view.findViewById(R.id.button17);
 
 
         customButtonTime();
@@ -81,6 +79,32 @@ public class MovieFragment extends Fragment {
         clickItemRecyclerView();
         closeFrag();
         serchMovie();
+        customSelectButton();
+    }
+
+    private void customSelectButton() {
+        btn10.setSelected(true);
+        List<Button> buttonList = new ArrayList<>();
+        buttonList.add(btn10);
+        buttonList.add(btn11);
+        buttonList.add(btn12);
+        buttonList.add(btn14);
+        buttonList.add(btn15);
+        buttonList.add(btn16);
+
+        for (Button button : buttonList) {
+            button.setOnClickListener(v -> {
+                unselectAllButtons(buttonList);
+                button.setSelected(true);
+
+            });
+        }
+
+    }
+    private void unselectAllButtons(List<Button> buttonList) {
+        for (Button button : buttonList) {
+            button.setSelected(false);
+        }
     }
 
     private void serchMovie() {

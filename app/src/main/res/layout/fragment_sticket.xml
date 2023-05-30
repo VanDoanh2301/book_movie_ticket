@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.SticketFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     >
+     <androidx.appcompat.widget.Toolbar
+         android:id="@+id/Toolbar_view"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/custom_home_bg"
+         >
+
+         <ImageView
+             android:id="@+id/icon_close_dt"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:backgroundTint="@color/white"
+             android:src="@drawable/baseline_home_24" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:text="Ticket"
+             android:textColor="@color/white"
+             android:textSize="20sp"
+             android:textStyle="bold" />
+
+     </androidx.appcompat.widget.Toolbar>
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/rc_ticket"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="12dp"
+         android:layout_marginStart="12dp"
+         android:layout_marginEnd="12dp"
+         />
+
+ </LinearLayout>
+</FrameLayout>

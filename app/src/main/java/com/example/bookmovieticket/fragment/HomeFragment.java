@@ -205,17 +205,17 @@ public class HomeFragment extends Fragment {
 
     }
 
-//    private List<Movie> getListMovie() {
-//        List<Movie> movies = new ArrayList<>();
-//        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
-//        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
-//        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
-//        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
-//        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
-//        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
-//        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
-//        return movies;
-//    }
+    private List<Movie> getListMovie() {
+        List<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
+        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
+        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
+        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
+        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
+        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
+        movies.add(new Movie("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg"));
+        return movies;
+    }
 
     private void configViewPager() {
         images = getListImage();

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view_sticker"
+    android:layout_width="wrap_content"
+    android:layout_height="?actionBarSize"
+    android:layout_marginTop="4dp"
+    >
+    <Button
+        android:id="@+id/btn_time_sticker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/custom_button_movie"
+        android:padding="10dp"
+        android:layout_marginEnd="5dp"
+        android:textSize="16sp"
+        android:text="6:00" />
+
+</androidx.cardview.widget.CardView>

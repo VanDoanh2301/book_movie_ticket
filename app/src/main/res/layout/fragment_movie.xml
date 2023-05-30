@@ -119,6 +119,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:textSize="16sp"
+                android:focusable="true"
                 android:text="6:00" />
 
             <Button

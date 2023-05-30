@@ -1,9 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle"
-    >
-    <corners android:radius="10dp"/>
-    <stroke android:color="#2196F3" android:width="2dp"/>
-    <solid android:color="@color/white"/>
+<!-- custom_button_movie.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-</shape>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp" />
+            <stroke android:color="#2196F3" android:width="2dp" />
+            <solid android:color="#B2EBF2" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp" />
+            <stroke android:color="#2196F3" android:width="2dp" />
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+</selector>
+

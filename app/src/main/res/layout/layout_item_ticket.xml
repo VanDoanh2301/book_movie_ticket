@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/custom_select_button"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/custom_select_button"
+
+        >
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_movie_ticket"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            android:layout_marginEnd="16dp"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearance="@style/circular"
+            app:srcCompat="@drawable/profile"
+            app:strokeColor="@color/purple_200"
+            app:strokeWidth="2dp" />
+        <TextView
+            android:id="@+id/txt_name_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Android"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@+id/img_movie_ticket"
+            />
+        <TextView
+            android:id="@+id/txt_time_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:layout_below="@id/txt_name_movie"
+            android:layout_toRightOf="@id/img_movie_ticket"
+            />
+        <TextView
+            android:id="@+id/txt_tikcet_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:layout_below="@id/txt_time_ticket"
+            android:layout_toRightOf="@id/img_movie_ticket"
+            />
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

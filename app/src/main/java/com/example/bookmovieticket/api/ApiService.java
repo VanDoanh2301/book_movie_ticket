@@ -2,11 +2,13 @@ package com.example.bookmovieticket.api;
 
 import com.example.bookmovieticket.model.Content;
 import com.example.bookmovieticket.model.Movie;
+import com.example.bookmovieticket.model.MovieScheduleRequest;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -20,5 +22,8 @@ public interface ApiService {
 
     @GET("movies/page")
     Call<Content> getMovieByName(@Query("name") String name);
+
+    @GET("schedules/movies/{id}")
+    Call<MovieScheduleRequest> getShowTime(@Path("id") Long id);
 
 }

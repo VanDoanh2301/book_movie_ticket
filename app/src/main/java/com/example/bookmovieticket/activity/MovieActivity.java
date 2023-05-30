@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class MovieActivity extends AppCompatActivity {
 
     private ImageView imgBack, imgBanner;
     private TextView txtName, txtDescription;
+    private Button bntBook;
     Long id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,22 @@ public class MovieActivity extends AppCompatActivity {
         findView();
         getIntentData();
         customView();
+        customBookButton();
+
+    }
+
+    private void customBookButton() {
+        bntBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MovieActivity.this, RoomActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putLong("id", id);
+                i.putExtra("dataId", bundle);
+                startActivity(i);
+
+            }
+        });
 
     }
 
@@ -70,6 +88,8 @@ public class MovieActivity extends AppCompatActivity {
         imgBanner = findViewById(R.id.imageView3);
         txtName = findViewById(R.id.textView5);
         txtDescription = findViewById(R.id.textView8);
+        bntBook = findViewById(R.id.button);
+
     }
 
 

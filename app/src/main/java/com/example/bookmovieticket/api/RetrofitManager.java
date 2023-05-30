@@ -1,11 +1,13 @@
 package com.example.bookmovieticket.api;
 
+import com.example.bookmovieticket.adapter.DateTypeAdapter;
+import com.example.bookmovieticket.adapter.TimeTypeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import javax.net.ssl.SSLContext;
+import java.sql.Time;
+import java.util.Date;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -16,8 +18,10 @@ public class RetrofitManager {
 
     public static  ApiService getRetrofit() {
         Gson gson = new GsonBuilder()
-                .setDateFormat("HH:mm:ss")
-                .setLenient().create();
+                .setDateFormat("yyyy-MM-dd")
+                .registerTypeAdapter(Time.class, new TimeTypeAdapter())
+                .create();
+
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
