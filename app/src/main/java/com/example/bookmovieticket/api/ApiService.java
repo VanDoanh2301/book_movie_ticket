@@ -23,6 +23,7 @@ public interface ApiService {
     @GET("movies/page")
     Call<Content> getMovieByName(@Query("name") String name);
 
+    //d
     @GET("schedules/movies/{id}")
     Call<MovieScheduleRequest> getShowTime(@Path("id") Long id);
 
