@@ -17,7 +17,6 @@ public class OderTicketController {
     private OderTicketRequestService oderTicketRequestService;
 
     @GetMapping
-    @PreAuthorize("hasRole('USER')")
     public TicketDetailDTO getTicketByUser_TicketID(@RequestParam(name = "user") Long user,
             @RequestParam(name = "ticket") Long ticket) {
         return oderTicketRequestService.getTicketDetailByUser_TicketID(user, ticket);

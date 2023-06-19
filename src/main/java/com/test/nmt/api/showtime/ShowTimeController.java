@@ -18,25 +18,21 @@ public class ShowTimeController {
     ShowTimeService showTimeService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ADMIN')")
     public void createShowTime(@RequestBody ShowTimeDTO showTimeDTO) {
         showTimeService.createShowTime(showTimeDTO);
     }
 
     @PostMapping("/update")
-    @PreAuthorize("hasRole('ADMIN')")
     public void updateShowTime(@RequestBody ShowTimeDTO showTimeDTO) {
         showTimeService.createShowTime(showTimeDTO);
     }
 
     @PostMapping("/delete")
-    @PreAuthorize("hasRole('ADMIN')")
     public void deleteShowTimeByID(@RequestParam(name = "id") Long id) {
         showTimeService.deleteShowTimeByID(id);
     }
 
     @PostMapping("/delete/movie")
-    @PreAuthorize("hasRole('ADMIN')")
     public void deleteAllShowTimeByMovieID(@RequestParam(name = "id") Long id) {
         showTimeService.deleteAllShowTimeByMovieID(id);
     }

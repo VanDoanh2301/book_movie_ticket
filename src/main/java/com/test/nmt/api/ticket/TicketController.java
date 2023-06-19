@@ -20,14 +20,12 @@ public class TicketController {
     private ShowTimeService showTimeService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('USER')")
     public void createTicket(@RequestBody TicketDTO ticketDTO) {
         ticketService.createTicket(ticketDTO);
         showTimeService.increaseTicketSold(ticketDTO.getShowTimeID());
     }
 
     @PostMapping("/update")
-    @PreAuthorize("hasRole('USER')")
     public void updateTicket(@RequestBody TicketDTO ticketDTO) {
         ticketService.createTicket(ticketDTO);
     }

@@ -49,14 +49,14 @@ public class MovieController {
         movieService.createMovie(movieDTO);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PostMapping("/update")
     public void updateMovie(@RequestBody MovieDTO movieDTO) {
         movieService.createMovie(movieDTO);
     }
 
     @PostMapping("/delete")
-    @PreAuthorize("hasRole('ADMIN')")
+
     public void deleteMovie(@RequestParam(name = "id") Long id) {
         movieService.deleteMovieByID(id);
     }
