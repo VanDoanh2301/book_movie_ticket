@@ -28,6 +28,7 @@ com\test\nmt\service\oderRequest\OderTicketRequestService.class
 com\test\nmt\api\movie\MovieController.class
 com\test\nmt\service\oderRequest\OderTicketRequestServiceImp.class
 com\test\nmt\model\ticket\TicketDetailByUserDTO.class
+com\test\nmt\model\user\UserDto2.class
 com\test\nmt\repository\RoomRepository.class
 com\test\nmt\repository\MovieRepository.class
 com\test\nmt\service\ticket\TicketService.class
@@ -48,6 +49,7 @@ com\test\nmt\service\user\UserService.class
 com\test\nmt\service\room\RoomService.class
 com\test\nmt\service\showTime\ShowTimeService.class
 com\test\nmt\security\jwt\AuthEntryPointJwt.class
+com\test\nmt\model\user\UserDto2$UserDto2Builder.class
 com\test\nmt\service\movie\MovieServiceImp.class
 com\test\nmt\service\ticket\TicketServiceImp.class
 com\test\nmt\model\room\RoomDTO.class
