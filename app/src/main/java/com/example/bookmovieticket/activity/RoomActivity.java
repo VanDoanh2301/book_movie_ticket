@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -17,9 +21,12 @@ import com.example.bookmovieticket.api.RetrofitManager;
 import com.example.bookmovieticket.model.Chair;
 import com.example.bookmovieticket.model.MovieScheduleRequest;
 import com.example.bookmovieticket.model.ShowTime;
+import com.example.bookmovieticket.model.Ticket;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,11 +40,20 @@ public class RoomActivity extends AppCompatActivity {
 
     private ButtonAdapter buttonAdapter;
 
+    private Button  btnBooking;
     private List<ShowTime> showTimes;
+
+    private List<Chair> putChairs = new ArrayList<>();
 
 
     private List<Chair> chairs;
+
+    private String emailUser, passwordUser,userName;
+    private Long userId;
     Long id;
+    String movieName, location;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +61,69 @@ public class RoomActivity extends AppCompatActivity {
 
         findView();
         customView();
+        authenLogin();
         getDataIntent();
         getDataShowTime();
+        setClickChair();
+        customBooking();
 
+
+    }
+
+    private void authenLogin() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        emailUser = sharedPreferences.getString("email", "");
+        passwordUser = sharedPreferences.getString("password", "");
+        userId= sharedPreferences.getLong("userId", -1);
+        userName = sharedPreferences.getString("name","");
+
+        if (!userName.isEmpty() && !passwordUser.isEmpty()) {
+            Toast.makeText(this, "Hello: " + userName, Toast.LENGTH_SHORT).show();
+        } else {
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            finish();
+        }
+    }
+    private void customBooking() {
+        btnBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ArrayList<String> locals = new ArrayList<>();
+                for (Chair c : putChairs) {
+                    String s = c.getLocation();
+                    locals.add(s);
+
+                }
+                Intent i = new Intent(RoomActivity.this, BankActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList("chairs", locals);
+                bundle.putString("movie", movieName);
+                i.putExtra("data", bundle);
+                startActivity(i);
+            }
+        });
+    }
+
+
+
+    private void setClickChair() {
+       adapter.setOnItemClickListener(new RoomAdapter.OnItemClickListener() {
+           @Override
+           public void onItemClick(int position) {
+                chairs.get(position).setSelected(!chairs.get(position).isSelected());
+                adapter.setData(chairs);
+
+                Chair chair = chairs.get(position);
+                if (putChairs.contains(chair)) {
+                    putChairs.remove(chair);
+                } else {
+                    putChairs.add(chair);
+                }
+                location = chair.getLocation();
+           }
+       });
     }
 
     private void getDataShowTime() {
@@ -77,6 +153,7 @@ public class RoomActivity extends AppCompatActivity {
         Intent i = getIntent();
         Bundle bundle = i.getBundleExtra("dataId");
         id = bundle.getLong("id");
+        movieName = bundle.getString("movie");
     }
 
 
@@ -89,7 +166,6 @@ public class RoomActivity extends AppCompatActivity {
                 listChair.add(chair);
             }
         }
-
         return listChair;
     }
 
@@ -98,12 +174,14 @@ public class RoomActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 8);
         rc.setLayoutManager(gridLayoutManager);
         adapter = new RoomAdapter(this);
-        adapter.setData(getListData());
+        chairs = getListData();
+        adapter.setData(chairs);
         rc.setAdapter(adapter);
     }
 
     private void findView() {
         rc = findViewById(R.id.recyclerView);
         rcTime = findViewById(R.id.rc_view_button_time);
+        btnBooking = findViewById(R.id.btn_booking_movie);
     }
 }

@@ -3,12 +3,17 @@ package com.example.bookmovieticket.api;
 import com.example.bookmovieticket.model.Content;
 import com.example.bookmovieticket.model.Movie;
 import com.example.bookmovieticket.model.MovieScheduleRequest;
+import com.example.bookmovieticket.model.Ticket;
+import com.example.bookmovieticket.model.User;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -27,4 +32,18 @@ public interface ApiService {
     @GET("schedules/movies/{id}")
     Call<MovieScheduleRequest> getShowTime(@Path("id") Long id);
 
+    @POST("login")
+    Call<User> loginUser(@Query("email") String email, @Query("password") String password);
+
+    @POST("register")
+    Call<String> register(@Body  User patient);
+
+    @POST("newTicketTime")
+    Call<String> createTicket(@Body Ticket ticket);
+
+    @GET("getTicket/{name}")
+    Call<List<Ticket>> getAllTicket(@Path("name") String name);
+
+    @GET("deleteTicket/{id}")
+    Call<String> deleteTicket(@Path("id") Long id);
 }

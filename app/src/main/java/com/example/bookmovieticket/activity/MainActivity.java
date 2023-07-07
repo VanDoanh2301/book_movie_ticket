@@ -8,12 +8,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.bookmovieticket.R;
@@ -39,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView navigationView;
 
+    private String emailUser, passwordUser,userName;
+    private Long userId;
+
     TextView txtSeeAll;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -49,12 +55,29 @@ public class MainActivity extends AppCompatActivity {
         txtSeeAll = findViewById(R.id.textView4);
 
 
+
         findView();
         setViewAdapter();
         openFragment();
+        authenLogin();
     }
 
 
+    private void authenLogin() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        emailUser = sharedPreferences.getString("email", "");
+        passwordUser = sharedPreferences.getString("password", "");
+        userId= sharedPreferences.getLong("userId", -1);
+        userName = sharedPreferences.getString("name","");
+
+        if (!userName.isEmpty() && !passwordUser.isEmpty()) {
+            Toast.makeText(this, "Hello: " + userName, Toast.LENGTH_SHORT).show();
+        } else {
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            finish();
+        }
+    }
     @Override
     public void onBackPressed() {
        homeFragment.clearEditText();
@@ -118,4 +141,9 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ViewPagerAdapter(this, list);
         navigationView = findViewById(R.id.navi_bt);
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
 }

@@ -26,6 +26,7 @@ public class MovieActivity extends AppCompatActivity {
     private TextView txtName, txtDescription;
     private Button bntBook;
     Long id;
+    String movieName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,7 @@ public class MovieActivity extends AppCompatActivity {
                 Intent i = new Intent(MovieActivity.this, RoomActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putLong("id", id);
+                bundle.putString("movie",movieName);
                 i.putExtra("dataId", bundle);
                 startActivity(i);
 
@@ -66,6 +68,7 @@ public class MovieActivity extends AppCompatActivity {
                     txtName.setText(movie.getMovieName());
                     txtDescription.setText(movie.getDescription());
                     txtName.setMovementMethod(new ScrollingMovementMethod());
+                    movieName = movie.getMovieName();
 
                 }
 

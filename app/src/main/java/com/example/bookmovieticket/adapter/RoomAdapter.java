@@ -3,6 +3,8 @@ package com.example.bookmovieticket.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +13,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookmovieticket.R;
+import com.example.bookmovieticket.api.RetrofitManager;
 import com.example.bookmovieticket.model.Chair;
 import com.example.bookmovieticket.model.Content;
 
@@ -22,6 +26,20 @@ import java.util.List;
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder> {
 
     private Context context;
+    private OnItemClickListener listener;
+
+    private int selectedPosition = RecyclerView.NO_POSITION;
+
+    boolean isBackgroundChanged = false;
+
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public OnItemClickListener getListener() {
+        return listener;
+    }
 
     private List<Chair> chairs;
 
@@ -47,14 +65,10 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         if (chair == null) {
             return;
         }
-
         holder.txtChair.setText(chair.getLocation());
 
         if (position >= 0 && position <= 15) {
             holder.cardView.setBackgroundColor(Color.RED);
-            holder.txtChair.setTextColor(Color.WHITE);
-        } else {
-            holder.cardView.setBackgroundColor(R.color.custom_select_navigationbt);
             holder.txtChair.setTextColor(Color.WHITE);
         }
         if(position == 24) {
@@ -69,7 +83,18 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         if(position == 44) {
             holder.cardView.setBackgroundResource(R.drawable.custom_close_chair);
         }
+        if (chair.isSelected()) {
+            holder.cardView.setCardBackgroundColor(Color.GREEN);
+        } else {
+            holder.cardView.setCardBackgroundColor(Color.GRAY);
+        }
 
+
+        holder.cardView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(position);
+            }
+        });
     }
 
     @Override
@@ -77,6 +102,9 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         return chairs.size();
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
     public  class  RoomViewHolder extends RecyclerView.ViewHolder {
         public TextView txtChair;
         public CardView cardView;
@@ -84,6 +112,16 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             super(itemView);
             txtChair = itemView.findViewById(R.id.txt_chair);
             cardView = itemView.findViewById(R.id.card_view_chair);
+
+
         }
+    }
+
+    public int getSelectedPosition() {
+        return selectedPosition;
+    }
+
+    public void setSelectedPosition(int selectedPosition) {
+        this.selectedPosition = selectedPosition;
     }
 }

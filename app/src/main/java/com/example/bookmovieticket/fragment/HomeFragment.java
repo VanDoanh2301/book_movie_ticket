@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
 
-    private TextView txtSeeAll;
+    private TextView txtSeeAll, txtUserName;
 
     private EditText editSearch;
 
@@ -83,10 +83,14 @@ public class HomeFragment extends Fragment {
         txtSeeAll = view.findViewById(R.id.textView4);
         circleIndicator= view.findViewById(R.id.circle_bar);
         editSearch = view.findViewById(R.id.edt_search);
+        txtUserName = view.findViewById(R.id.textView);
         relaIn = view.findViewById(R.id.relative_in);
         relaOut = view.findViewById(R.id.relative_out);
         rc_gone = view.findViewById(R.id.rc_gone_movie_search);
         adapterMovie = new MovieAdapterMain(getContext());
+
+        String userName = ((MainActivity) getActivity()).getUserName();
+        txtUserName.setText("Hello "+ userName);
 
         slideBar();
         configViewPager();
