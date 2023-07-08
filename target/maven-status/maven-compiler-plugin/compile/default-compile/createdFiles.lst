@@ -1,4 +1,5 @@
 com\test\nmt\model\user\Role.class
+com\test\nmt\model\ticket\Ticket.class
 com\test\nmt\service\scheduleRequest\ScheduleRequestService.class
 com\test\nmt\api\showtime\ShowTimeController.class
 com\test\nmt\model\room\RoomsEntity.class
@@ -34,6 +35,7 @@ com\test\nmt\repository\MovieRepository.class
 com\test\nmt\service\ticket\TicketService.class
 com\test\nmt\NmtApplication.class
 com\test\nmt\payload\request\SignupRequest.class
+com\test\nmt\repository\TicketFakeRepository.class
 com\test\nmt\model\movie\MovieDTO.class
 com\test\nmt\repository\TicketRepository.class
 com\test\nmt\api\user\UserController.class
@@ -48,6 +50,7 @@ com\test\nmt\model\showTime\ShowTimeEntity.class
 com\test\nmt\service\user\UserService.class
 com\test\nmt\service\room\RoomService.class
 com\test\nmt\service\showTime\ShowTimeService.class
+com\test\nmt\model\ticket\TicketFakeDto.class
 com\test\nmt\security\jwt\AuthEntryPointJwt.class
 com\test\nmt\model\user\UserDto2$UserDto2Builder.class
 com\test\nmt\service\movie\MovieServiceImp.class

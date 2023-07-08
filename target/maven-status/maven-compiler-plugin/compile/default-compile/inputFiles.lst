@@ -6,6 +6,7 @@ E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\payload\request\SignupReque
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\service\showTime\ShowtimeServiceImp.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\model\ticket\TicketsEntity.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\repository\MovieRepository.java
+E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\model\ticket\Ticket.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\repository\RoleRepository.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\service\user\UserService.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\service\user\UserServiceIpm.java
@@ -22,6 +23,7 @@ E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\api\movie\MovieController.j
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\security\services\UserDetailsServiceImpl.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\api\room\RoomController.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\service\room\RoomService.java
+E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\model\ticket\TicketFakeDto.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\service\showTime\ShowTimeService.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\model\user\Role.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\service\ticket\TicketService.java
@@ -48,6 +50,7 @@ E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\service\room\RoomServiceImp
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\model\showTime\ShowTimeEntity.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\security\services\UserDetailsImpl.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\model\ticket\TicketDetailDTO.java
+E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\repository\TicketFakeRepository.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\api\schedules\SchedulesController.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\model\ticket\TicketDetailByUserDTO.java
 E:\Backend_Movie_Web-main\src\main\java\com\test\nmt\service\ticket\TicketServiceImp.java
