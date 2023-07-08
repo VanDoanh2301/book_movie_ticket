@@ -20,8 +20,13 @@ import com.example.bookmovieticket.R;
 import com.example.bookmovieticket.api.RetrofitManager;
 import com.example.bookmovieticket.model.Chair;
 import com.example.bookmovieticket.model.Content;
+import com.example.bookmovieticket.model.Ticket;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder> {
 
@@ -46,6 +51,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     public RoomAdapter(Context context) {
         this.context = context;
     }
+
     public void setData(List<Chair> chairs) {
         this.chairs = chairs;
         notifyDataSetChanged();
@@ -71,17 +77,17 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             holder.cardView.setBackgroundColor(Color.RED);
             holder.txtChair.setTextColor(Color.WHITE);
         }
-        if(position == 24) {
-            holder.cardView.setBackgroundResource(R.drawable.custom_close_chair);
+        if (position == 24) {
+            holder.cardView.setCardBackgroundColor(Color.RED);
         }
-        if(position == 35) {
-            holder.cardView.setBackgroundResource(R.drawable.custom_close_chair);
+        if (position == 35) {
+            holder.cardView.setCardBackgroundColor(Color.RED);
         }
-        if(position == 55) {
-            holder.cardView.setBackgroundResource(R.drawable.custom_close_chair);
+        if (position == 55) {
+            holder.cardView.setCardBackgroundColor(Color.RED);
         }
-        if(position == 44) {
-            holder.cardView.setBackgroundResource(R.drawable.custom_close_chair);
+        if (position == 44) {
+            holder.cardView.setCardBackgroundColor(Color.RED);
         }
         if (chair.isSelected()) {
             holder.cardView.setCardBackgroundColor(Color.GREEN);
@@ -89,7 +95,21 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
             holder.cardView.setCardBackgroundColor(Color.GRAY);
         }
 
+        RetrofitManager.getRetrofit().getTicketAll().enqueue(new Callback<List<Ticket>>() {
+            @Override
+            public void onResponse(Call<List<Ticket>> call, Response<List<Ticket>> response) {
+                for (int i = 0; i < response.body().size(); i++) {
+                    if (response.body().get(i).getLocation().equals(chair.getLocation())) {
+                        holder.cardView.setCardBackgroundColor(Color.RED);
+                    }
+                }
+            }
 
+            @Override
+            public void onFailure(Call<List<Ticket>> call, Throwable t) {
+
+            }
+        });
         holder.cardView.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onItemClick(position);
@@ -105,9 +125,11 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
-    public  class  RoomViewHolder extends RecyclerView.ViewHolder {
+
+    public class RoomViewHolder extends RecyclerView.ViewHolder {
         public TextView txtChair;
         public CardView cardView;
+
         public RoomViewHolder(@NonNull View itemView) {
             super(itemView);
             txtChair = itemView.findViewById(R.id.txt_chair);

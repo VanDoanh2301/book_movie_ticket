@@ -47,6 +47,7 @@ public class RoomActivity extends AppCompatActivity {
 
 
     private List<Chair> chairs;
+    private List<Ticket> tickets;
 
     private String emailUser, passwordUser,userName;
     private Long userId;
@@ -67,6 +68,29 @@ public class RoomActivity extends AppCompatActivity {
         setClickChair();
         customBooking();
 
+
+
+
+    }
+
+    private void customChairPoision() {
+        RetrofitManager.getRetrofit().getTicketAll().enqueue(new Callback<List<Ticket>>() {
+            @Override
+            public void onResponse(Call<List<Ticket>> call, Response<List<Ticket>> response) {
+                tickets = response.body();
+                for (int i =0; i< tickets.size(); i++) {
+                    if (tickets.get(i).getLocation().equals(chairs.get(i).getLocation())) {
+                        chairs.get(i).setSelected(true);
+                        adapter.setData(chairs);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Ticket>> call, Throwable t) {
+
+            }
+        });
 
     }
 
@@ -121,6 +145,7 @@ public class RoomActivity extends AppCompatActivity {
                 } else {
                     putChairs.add(chair);
                 }
+
                 location = chair.getLocation();
            }
        });

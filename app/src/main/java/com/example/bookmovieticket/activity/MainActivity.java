@@ -24,6 +24,7 @@ import com.example.bookmovieticket.adapter.ViewPagerAdapter;
 import com.example.bookmovieticket.fragment.HomeFragment;
 import com.example.bookmovieticket.fragment.MovieFragment;
 import com.example.bookmovieticket.fragment.SticketFragment;
+import com.example.bookmovieticket.fragment.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private MovieFragment movieFragment = new MovieFragment();
 
     private SticketFragment sticketFragment = new SticketFragment();
+
+    private UserFragment userFragment = new UserFragment();
 
     private ArrayList<Fragment> list = new ArrayList<>();
     private ViewPager2 viewPager2;
@@ -107,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         navigationView.getMenu().findItem(R.id.user).setChecked(true);
                         break;
+                    case 3:
+                        navigationView.getMenu().findItem(R.id.setting).setChecked(true);
+                        break;
 
                 }
             }
@@ -124,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.user:
                     viewPager2.setCurrentItem(2);
                     break;
+                case R.id.setting:
+                    viewPager2.setCurrentItem(3);
+                    break;
             }
             return true;
         });
@@ -138,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(homeFragment);
         list.add(movieFragment);
         list.add(sticketFragment);
+        list.add(userFragment);
         adapter = new ViewPagerAdapter(this, list);
         navigationView = findViewById(R.id.navi_bt);
     }
@@ -146,4 +156,7 @@ public class MainActivity extends AppCompatActivity {
         return userName;
     }
 
+    public String getEmailUser() {
+        return emailUser;
+    }
 }

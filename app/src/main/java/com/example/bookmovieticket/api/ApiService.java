@@ -41,6 +41,8 @@ public interface ApiService {
     @POST("newTicketTime")
     Call<String> createTicket(@Body Ticket ticket);
 
+    @GET("getTicket")
+    Call<List<Ticket>> getTicketAll();
     @GET("getTicket/{name}")
     Call<List<Ticket>> getAllTicket(@Path("name") String name);
 

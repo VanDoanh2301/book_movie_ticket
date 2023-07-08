@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bookmovieticket.R;
@@ -23,7 +24,8 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailEdt, passEdt;
-    private AppCompatButton btnLogin, btnSignup;
+    private AppCompatButton btnLogin;
+    private TextView btnSignup;
     private String email, password;
     private User patient;
 
@@ -107,6 +109,6 @@ public class LoginActivity extends AppCompatActivity {
         emailEdt = findViewById(R.id.username);
         passEdt = findViewById(R.id.pass_dn);
         btnLogin = findViewById(R.id.btnSignIn);
-        btnSignup = findViewById(R.id.btn_signup);
+      btnSignup = findViewById(R.id.btn_signup);
     }
 }
